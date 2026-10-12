@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Houssem Raissi · Ingénieur QA & Automatisation de tests</title>
+<meta name="description" content="Portfolio de Houssem Raissi, ingénieur QA et automatisation de tests : Playwright, Python, GitLab CI, Allure, BDD.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f7;--panel:#fff;--ink:#12263a;--mute:#52667a;--line:#d3dde6;--blue:#2f6da3;--ok:#157a55;--ko:#c0392b;--chip:#e2ebf3}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1823;--panel:#15232f;--ink:#e7eef5;--mute:#9bb0c3;--line:#26394a;--blue:#7fb2e0;--ok:#4cc38f;--ko:#ff8a7a;--chip:#1e3142}}
+:root[data-theme=dark]{--bg:#0e1823;--panel:#15232f;--ink:#e7eef5;--mute:#9bb0c3;--line:#26394a;--blue:#7fb2e0;--ok:#4cc38f;--ko:#ff8a7a;--chip:#1e3142}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,sans-serif}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.1;margin:0}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:1.25rem;align-items:center;padding-top:.7rem;padding-bottom:.7rem;overflow-x:auto}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;white-space:nowrap}
+nav a:hover{color:var(--blue)}
+nav b{font-family:"Bricolage Grotesque";margin-right:auto;font-size:1.1rem}
+#lang,#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.25rem .7rem;cursor:pointer;font:inherit}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;padding:4.5rem 0 3.5rem}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;letter-spacing:-.03em}
+.role{font-size:1.25rem;color:var(--blue);font-weight:500;margin:.8rem 0 1.2rem}
+.hero p+p{margin-top:-.7rem}
+.hero p{max-width:38rem;color:var(--mute);margin:0 0 1.6rem}
+.btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:8px;font-weight:500;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--blue)}
+.run{background:var(--panel);border:1px solid var(--line);border-radius:12px;font:400 .9rem/1.5 "IBM Plex Mono",monospace;overflow:hidden}
+.run header{display:flex;justify-content:space-between;padding:.7rem 1rem;border-bottom:1px solid var(--line);color:var(--mute)}
+.run ul{list-style:none;margin:0;padding:.8rem 1rem}
+.run li{display:flex;gap:.6rem;padding:.25rem 0;opacity:0}
+.run li.on{opacity:1}
+.run li i{font-style:normal;color:var(--ok);font-weight:500}
+.run li.ko i{color:var(--ko)}
+.run li small{margin-left:auto;color:var(--mute)}
+.run footer{padding:.7rem 1rem;border-top:1px solid var(--line);color:var(--mute)}
+.run footer b{color:var(--ok)}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(1.8rem,3.5vw,2.4rem);margin-bottom:2rem;letter-spacing:-.02em}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.6rem 2rem}
+.skills h3{font-size:1.05rem;margin-bottom:.6rem;color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.chips li{background:var(--chip);padding:.15rem .65rem;border-radius:6px;font-size:.92rem}
+.tl{position:relative;margin:0;padding:0 0 0 1.8rem;list-style:none;border-left:2px solid var(--line)}
+.tl>li{position:relative;margin-bottom:2.6rem}
+.tl>li::before{content:"";position:absolute;left:-2.2rem;top:.45rem;width:.75rem;height:.75rem;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px var(--bg)}
+.tl h3{font-size:1.35rem}
+.tl .meta{color:var(--mute);margin:.2rem 0 .8rem}
+.tl ul{margin:0 0 .8rem;padding-left:1.1rem;max-width:46rem}
+.tl ul li{margin-bottom:.35rem}
+.tl .chips li{font:400 .82rem "IBM Plex Mono",monospace}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2rem}
+.cols h3{font-size:1.1rem;margin-bottom:.3rem}
+.cols p{margin:0 0 1rem;color:var(--mute)}
+.contact{font-size:1.2rem}
+.contact a{display:block;margin:.3rem 0}
+.badge{display:inline-block;margin-left:.6rem;padding:0 .5rem;border-radius:5px;font:500 .75rem/1.6 "IBM Plex Mono",monospace;background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.badge.run2{background:color-mix(in srgb,var(--blue) 16%,transparent);color:var(--blue)}
+.gh{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:8px;padding:1rem 1.2rem;margin:0 0 1.5rem;font:400 .95rem/1.8 "IBM Plex Mono",monospace;overflow-x:auto}
+.gh b{color:var(--blue);font-weight:500}
+.bug{margin-top:.3rem}
+footer.end{padding:2rem 0;color:var(--mute);font-size:.9rem;border-top:1px solid var(--line)}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:2.5rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.run li{opacity:1!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<b>Houssem Raissi</b>
+<a href="#competences">Compétences</a><a href="#experiences">Expériences</a><a href="#formation">Formation</a><a href="#contact">Contact</a>
+<button id="lang" type="button" aria-label="English / Français">EN</button>
+<button id="theme" type="button" aria-label="Changer de thème">Thème</button>
+</div></nav>
+
+<main>
+<div class="wrap hero">
+<div>
+<h1>Houssem Raissi</h1>
+<div class="role">Ingénieur QA & Automatisation de tests</div>
+<p>Ingénieur QA et automatisation de tests depuis 2019, je conçois des stratégies et des frameworks de tests fiables pour le web, le mobile et les API, du test manuel à l'automatisation, de la spécification à la mise en production. Je travaille en équipe Agile avec les développeurs et le produit (Three Amigos, BDD) et je m'appuie sur la CI/CD et un reporting clair pour que toute l'équipe voie la qualité.</p>
+<p>Référent technique, je documente, je partage mes connaissances et je fais monter l'équipe en compétence. Je suis ouvert à tous les postes autour de la qualité : QA, automatisation, SDET, référent ou lead qualité.</p>
+<div class="btns">
+<a class="btn main" href="#experiences">Voir mes expériences</a>
+<a class="btn" href="mailto:Houssam.rayssi@gmail.com">M'écrire</a>
+<a class="btn" href="CV_Houssem_RAISSI_.pdf" download>Télécharger le CV</a>
+</div>
+</div>
+<div class="run" role="img" aria-label="Exemple de rapport de tests : tous les tests passent, un seul échoue volontairement">
+<header><span>houssem.spec.ts</span><span id="clock">0.0 s</span></header>
+<ul id="tests">
+<li><i>✓</i>Définir la stratégie et le plan de tests<small>stratégie</small></li>
+<li><i>✓</i>Automatiser les tests web, mobile et API<small>automatisation</small></li>
+<li><i>✓</i>Intégrer les tests dans la CI/CD<small>CI/CD</small></li>
+<li><i>✓</i>Suivre les anomalies et produire les rapports<small>reporting</small></li>
+<li><i>✓</i>Collaborer avec les équipes Agile (Three Amigos)<small>Agile</small></li>
+<li class="ko"><i>✗</i>Accepter un bug en production<small>refusé</small></li>
+</ul>
+<footer><b>5 réussis</b>, 1 échec attendu</footer>
+</div>
+</div>
+
+<section id="competences"><div class="wrap">
+<h2>Compétences</h2>
+<div class="skills">
+<div><h3>Automatisation</h3><ul class="chips"><li>Playwright</li><li>Selenium</li><li>Appium</li><li>CodeceptJS</li><li>Robot Framework</li><li>Behave BDD</li><li>Browserstack</li><li>Firebase Test Lab</li><li>Allure</li></ul></div>
+<div><h3>API & performance</h3><ul class="chips"><li>Postman</li><li>Bruno</li><li>SoapUI</li><li>JMeter</li></ul></div>
+<div><h3>Gestion de tests</h3><ul class="chips"><li>Jira Xray</li><li>Azure DevOps</li><li>qTest</li><li>TestRail</li></ul></div>
+<div><h3>CI/CD & DevOps</h3><ul class="chips"><li>GitLab CI</li><li>Jenkins</li><li>Docker</li><li>AWS</li><li>Git</li></ul></div>
+<div><h3>Langages</h3><ul class="chips"><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>Java</li><li>Gherkin</li><li>Ruff</li></ul></div>
+<div><h3>Méthodes & accessibilité</h3><ul class="chips"><li>Agile Scrum</li><li>SAFe</li><li>BDD</li><li>TDD</li><li>Three Amigos</li><li>axe-core</li></ul></div>
+<div><h3>Bases de données</h3><ul class="chips"><li>MySQL</li><li>MongoDB</li><li>Firebase</li></ul></div>
+<div><h3>Systèmes</h3><ul class="chips"><li>Linux</li><li>macOS</li><li>Windows</li><li>iOS</li><li>Android</li></ul></div>
+</div>
+</div></section>
+
+<section id="experiences"><div class="wrap">
+<h2>Expériences</h2>
+<ol class="tl">
+<li><h3>Deepki</h3><div class="meta">Ingénieur QA & Automatisation · depuis septembre 2025<span class="badge run2">EN COURS</span></div>
+<ul>
+<li>Définition de l'architecture et de la stratégie de tests, avec les bases du framework et les standards de l'équipe.</li>
+<li>Tests end-to-end Playwright sur les parcours critiques, lancés dans GitLab CI à chaque livraison, en nightly ou à la demande.</li>
+<li>Rapports Allure et alertes Slack automatiques, plus des statistiques mensuelles (flakiness, durée, échecs) partagées aux managers.</li>
+<li>Réduction de la flakiness : données générées par API, retry, exécution parallèle. Ajout de tests d'accessibilité axe-core.</li>
+<li>Linting avec Ruff, documentation, sessions de partage et IA pour accélérer la migration des anciens tests.</li>
+</ul>
+<ul class="chips"><li>Playwright</li><li>Python</li><li>GitLab CI</li><li>Allure</li><li>axe-core</li><li>Gherkin</li></ul></li>
+
+<li><h3>PMU</h3><div class="meta">Ingénieur QA & Automatisation · décembre 2023 à septembre 2025<span class="badge">PASSED</span></div>
+<ul>
+<li>Cérémonies Agile, SAFe et Scrum, sessions Amigos sur les flux critiques : panier, mises, paiements.</li>
+<li>Réunions GO/NO GO : validation des transactions financières, bonus, freebets et conformité des traces envoyées à l'ANJ.</li>
+<li>Cahiers de tests, environnements et jeux de données, exécution et analyse. Tests automatisés intégrés à GitLab CI.</li>
+<li>Collections Postman avec scripts JavaScript, puis migration vers Bruno. Manipulation de SQS, EC2, Kafka et S3.</li>
+<li>Dossiers d'homologation du nouveau panier, visites sur les hippodromes et sessions d'innovation autour de l'IA.</li>
+</ul>
+<ul class="chips"><li>Postman</li><li>Bruno</li><li>Xray</li><li>Jenkins</li><li>AWS</li><li>Java</li></ul></li>
+
+<li><h3>Betclic Group</h3><div class="meta">Ingénieur QA & Automatisation · juillet à décembre 2023<span class="badge">PASSED</span></div>
+<ul>
+<li>Réunions 3 Amigos autour du parcours de création de compte, sur web, Android et iOS.</li>
+<li>Suites de tests automatisés et manuels, maintenues pour réduire l'abandon à l'inscription.</li>
+<li>Tests exploratoires pour repérer les frictions, campagnes de compatibilité navigateurs et systèmes.</li>
+<li>Suivi des anomalies sous Jira et validation avant mise en production.</li>
+</ul>
+<ul class="chips"><li>Playwright</li><li>CodeceptJS</li><li>Appium</li><li>BrowserStack</li><li>qTest</li></ul></li>
+
+<li><h3>Dekra</h3><div class="meta">Ingénieur QA & Automatisation · janvier à juin 2023<span class="badge">PASSED</span></div>
+<ul>
+<li>Préparation des stories, rédaction des spécifications, des cas et des plans de test.</li>
+<li>Tests automatisés Robot Framework de non-régression IHM et E2E, démonstrations à l'équipe.</li>
+<li>Rapports d'anomalies dans Azure DevOps, amélioration du framework (reporting, données, CI) et compte-rendu au Test Manager.</li>
+</ul>
+<ul class="chips"><li>Robot Framework</li><li>Selenium</li><li>Appium</li><li>Azure DevOps</li><li>Python</li></ul></li>
+
+<li><h3>Orange France</h3><div class="meta">Ingénieur QA & Automatisation · octobre 2020 à janvier 2023<span class="badge">PASSED</span></div>
+<ul>
+<li>Plans de test, cahiers de recette, suivi du cycle de vie des anomalies sous Jira.</li>
+<li>Tests de performance : JMeter pour le site web, Firebase Test Lab pour l'application mobile.</li>
+<li>Scripts automatisés vérifiant les mesures et rapports produits par les smartphones.</li>
+<li>Campagnes multi-navigateurs et multi-OS (Linux, Windows, macOS, iOS, Android).</li>
+</ul>
+<ul class="chips"><li>Python</li><li>Java</li><li>Behave BDD</li><li>Selenium</li><li>JMeter</li><li>Appium</li></ul></li>
+</ol>
+</div></section>
+
+<section id="formation"><div class="wrap">
+<h2>Formation et distinctions</h2>
+<div class="cols">
+<div>
+<h3>ENET'COM</h3><p>Ingénieur informatique, 2016 à 2019</p>
+<h3>IPEIG</h3><p>Classes préparatoires physique technique PT, 2014 à 2016</p>
+<h3>LSH</h3><p>Baccalauréat en sciences techniques, 2013 à 2014</p>
+</div>
+<div>
+<h3>Aéromodélisme</h3>
+<p>2021 : membre du jury de l'Aerocup, compétition nationale en Tunisie.<br>
+2019 : 1er prix « Aeropreuneur » à l'Aeroday.<br>
+2018 : 3e prix planeur et 1er prix du Drone Challenge à l'AéroGlider.</p>
+<h3>Langues</h3>
+<p>Français, anglais, arabe.</p>
+</div>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<h2>Contact</h2>
+<pre class="gh" aria-label="Scénario Gherkin de contact"><b>Scénario :</b> Travailler ensemble
+  <b>Etant donné</b> que vous cherchez un QA qui automatise
+  <b>Quand</b> vous m'envoyez un message
+  <b>Alors</b> je réponds et on lance les tests</pre>
+<div class="contact">
+<a href="mailto:Houssam.rayssi@gmail.com">Houssam.rayssi@gmail.com</a>
+<a href="https://www.linkedin.com/in/houssem-raissi-a12a6a188/" rel="noopener">LinkedIn : houssem-raissi</a>
+</div>
+</div></section>
+</main>
+
+<footer class="end"><div class="wrap">« L'informatique n'est qu'un outil, comme un pinceau ou un crayon » – Griffo<div class="bug">Un bug sur cette page ? <a href="mailto:Houssam.rayssi@gmail.com?subject=%5BBUG%5D%20Portfolio&body=Etapes%20pour%20reproduire%20%3A%0AResultat%20attendu%20%3A%0AResultat%20obtenu%20%3A">Ouvrir un ticket</a> (étapes, résultat attendu, résultat obtenu).</div></div></footer>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('#tests li')),clock=document.getElementById('clock');
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce){clock.textContent='4.2 s';}
+  else{items.forEach(function(li,i){setTimeout(function(){li.classList.add('on');clock.textContent=((i+1)*0.7).toFixed(1)+' s'},500+i*650)})}
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme');if(s)root.dataset.theme=s}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+    try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}
+  });
+})();
+</script>
+<script>
+(function(){
+var EN={"Langues": "Languages", "Ingénieur QA & Automatisation de tests": "QA & Test Automation Engineer", "Houssem Raissi · Ingénieur QA & Automatisation de tests": "Houssem Raissi · QA & Test Automation Engineer", "Compétences": "Skills", "Expériences": "Experience", "Formation": "Education", "Thème": "Theme", "Changer de thème": "Change theme", "Ingénieur QA et automatisation de tests depuis 2019, je conçois des stratégies et des frameworks de tests fiables pour le web, le mobile et les API, du test manuel à l'automatisation, de la spécification à la mise en production. Je travaille en équipe Agile avec les développeurs et le produit (Three Amigos, BDD) et je m'appuie sur la CI/CD et un reporting clair pour que toute l'équipe voie la qualité.": "QA and test automation engineer since 2019, I design reliable test strategies and frameworks for web, mobile and APIs, from manual testing to automation and from specification to release. I work in Agile teams with developers and product (Three Amigos, BDD), relying on CI/CD and clear reporting so the whole team can see quality.", "Référent technique, je documente, je partage mes connaissances et je fais monter l'équipe en compétence. Je suis ouvert à tous les postes autour de la qualité : QA, automatisation, SDET, référent ou lead qualité.": "As a technical referent, I document, share knowledge and help the team grow its skills. I am open to any role around software quality: QA, automation, SDET, quality referent or lead.", "Voir mes expériences": "See my experience", "M'écrire": "Email me", "Télécharger le CV": "Download CV", "Exemple de rapport de tests : tous les tests passent, un seul échoue volontairement": "Sample test report: all tests pass, one fails on purpose", "Accepter un bug en production": "Accept a bug in production", "refusé": "rejected", "5 réussis": "5 passed", ", 1 échec attendu": ", 1 expected failure", "Automatisation": "Automation", "Gestion de tests": "Test management", "Langages": "Languages", "Méthodes & accessibilité": "Methods & accessibility", "Bases de données": "Databases", "Systèmes": "Operating systems", "Ingénieur QA & Automatisation · depuis septembre 2025": "QA & Test Automation Engineer · since September 2025", "Ingénieur QA & Automatisation · décembre 2023 à septembre 2025": "QA & Test Automation Engineer · December 2023 to September 2025", "Ingénieur QA & Automatisation · juillet à décembre 2023": "QA & Test Automation Engineer · July to December 2023", "Ingénieur QA & Automatisation · janvier à juin 2023": "QA & Test Automation Engineer · January to June 2023", "Ingénieur QA & Automatisation · octobre 2020 à janvier 2023": "QA & Test Automation Engineer · October 2020 to January 2023", "EN COURS": "ONGOING", "Définition de l'architecture et de la stratégie de tests, avec les bases du framework et les standards de l'équipe.": "Defined the test architecture and strategy, laying the framework foundations and the team's standards.", "Tests end-to-end Playwright sur les parcours critiques, lancés dans GitLab CI à chaque livraison, en nightly ou à la demande.": "Playwright end-to-end tests on critical user journeys, run in GitLab CI on every delivery, nightly or on demand.", "Rapports Allure et alertes Slack automatiques, plus des statistiques mensuelles (flakiness, durée, échecs) partagées aux managers.": "Automated Allure reports and Slack alerts, plus monthly statistics (flakiness, duration, failures) shared with managers.", "Réduction de la flakiness : données générées par API, retry, exécution parallèle. Ajout de tests d'accessibilité axe-core.": "Reduced flakiness with API-generated data, retries and parallel execution. Added axe-core accessibility tests.", "Linting avec Ruff, documentation, sessions de partage et IA pour accélérer la migration des anciens tests.": "Linting with Ruff, documentation, knowledge-sharing sessions, and AI to speed up the migration of legacy tests.", "Cérémonies Agile, SAFe et Scrum, sessions Amigos sur les flux critiques : panier, mises, paiements.": "Agile, SAFe and Scrum ceremonies, Amigos sessions on critical flows: betslip, bets, payments.", "Réunions GO/NO GO : validation des transactions financières, bonus, freebets et conformité des traces envoyées à l'ANJ.": "GO/NO GO meetings: validation of financial transactions, bonuses, freebets and compliance of the traces sent to the ANJ (French gambling regulator).", "Cahiers de tests, environnements et jeux de données, exécution et analyse. Tests automatisés intégrés à GitLab CI.": "Test plans, environments and test data, execution and analysis. Automated tests integrated into GitLab CI.", "Collections Postman avec scripts JavaScript, puis migration vers Bruno. Manipulation de SQS, EC2, Kafka et S3.": "Postman collections with JavaScript scripts, then migration to Bruno. Hands-on with SQS, EC2, Kafka and S3.", "Dossiers d'homologation du nouveau panier, visites sur les hippodromes et sessions d'innovation autour de l'IA.": "Certification files for the new betslip, visits to racecourses and innovation sessions around AI.", "Réunions 3 Amigos autour du parcours de création de compte, sur web, Android et iOS.": "3 Amigos meetings on the account creation journey, across web, Android and iOS.", "Suites de tests automatisés et manuels, maintenues pour réduire l'abandon à l'inscription.": "Automated and manual test suites, maintained to reduce drop-off at sign-up.", "Tests exploratoires pour repérer les frictions, campagnes de compatibilité navigateurs et systèmes.": "Exploratory testing to spot friction points, and browser and OS compatibility campaigns.", "Suivi des anomalies sous Jira et validation avant mise en production.": "Defect tracking in Jira and validation before release to production.", "Préparation des stories, rédaction des spécifications, des cas et des plans de test.": "Story preparation, writing test specifications, test cases and test plans.", "Tests automatisés Robot Framework de non-régression IHM et E2E, démonstrations à l'équipe.": "Robot Framework automated regression tests (UI and E2E), with demos to the team.", "Rapports d'anomalies dans Azure DevOps, amélioration du framework (reporting, données, CI) et compte-rendu au Test Manager.": "Defect reports in Azure DevOps, framework improvements (reporting, data, CI) and reporting to the Test Manager.", "Plans de test, cahiers de recette, suivi du cycle de vie des anomalies sous Jira.": "Test plans, acceptance test books, and defect lifecycle tracking in Jira.", "Tests de performance : JMeter pour le site web, Firebase Test Lab pour l'application mobile.": "Performance testing: JMeter for the website, Firebase Test Lab for the mobile app.", "Scripts automatisés vérifiant les mesures et rapports produits par les smartphones.": "Automated scripts checking the measurements and reports produced by smartphones.", "Campagnes multi-navigateurs et multi-OS (Linux, Windows, macOS, iOS, Android).": "Cross-browser and cross-OS campaigns (Linux, Windows, macOS, iOS, Android).", "Formation et distinctions": "Education and awards", "Ingénieur informatique, 2016 à 2019": "Computer engineering degree, 2016 to 2019", "Classes préparatoires physique technique PT, 2014 à 2016": "Preparatory classes in technical physics (PT), 2014 to 2016", "Baccalauréat en sciences techniques, 2013 à 2014": "Baccalaureate in technical sciences, 2013 to 2014", "Aéromodélisme": "Model aircraft", "2021 : membre du jury de l'Aerocup, compétition nationale en Tunisie.": "2021: jury member at the Aerocup, a national competition in Tunisia.", "2019 : 1er prix « Aeropreuneur » à l'Aeroday.": "2019: 1st prize “Aeropreneur” at Aeroday.", "2018 : 3e prix planeur et 1er prix du Drone Challenge à l'AéroGlider.": "2018: 3rd prize in gliders and 1st prize in the Drone Challenge at AéroGlider.", "Français, anglais, arabe.": "French, English, Arabic.", "Scénario Gherkin de contact": "Contact Gherkin scenario", "Scénario :": "Scenario:", "Travailler ensemble": "Work together", "Etant donné": "Given", "que vous cherchez un QA qui automatise": "you are looking for a QA engineer who automates", "Quand": "When", "vous m'envoyez un message": "you send me a message", "Alors": "Then", "je réponds et on lance les tests": "I reply and we run the tests", "« L'informatique n'est qu'un outil, comme un pinceau ou un crayon » – Griffo": "“Computing is just a tool, like a brush or a pencil” – Griffo", "Un bug sur cette page ?": "A bug on this page?", "Ouvrir un ticket": "Open a ticket", "(étapes, résultat attendu, résultat obtenu).": "(steps, expected result, actual result).", "Définir la stratégie et le plan de tests": "Define the test strategy and plan", "stratégie": "strategy", "Automatiser les tests web, mobile et API": "Automate web, mobile and API tests", "automatisation": "automation", "Intégrer les tests dans la CI/CD": "Integrate tests into CI/CD", "Suivre les anomalies et produire les rapports": "Track defects and produce reports", "Collaborer avec les équipes Agile (Three Amigos)": "Collaborate with Agile teams (Three Amigos)"};
+var root=document.documentElement,btn=document.getElementById('lang'),nodes=[],attrs=[];
+var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+while(w.nextNode()){var n=w.currentNode,tg=n.parentNode.tagName;if(tg==='SCRIPT'||tg==='STYLE'||n.parentNode===btn)continue;var t=n.nodeValue.trim();if(EN[t])nodes.push([n,n.nodeValue,t])}
+document.querySelectorAll('[aria-label]').forEach(function(e){var a=e.getAttribute('aria-label');if(EN[a])attrs.push([e,a])});
+var T0=document.title,desc=document.querySelector('meta[name=description]'),D0=desc.content;
+var D1='Portfolio of Houssem Raissi, QA and test automation engineer: Playwright, Python, GitLab CI, Allure, BDD.';
+var bug=document.querySelector('.bug a'),B0=bug.href,B1='mailto:Houssam.rayssi@gmail.com?subject=%5BBUG%5D%20Portfolio&body=Steps%20to%20reproduce%3A%0AExpected%20result%3A%0AActual%20result%3A';
+function set(l){
+  nodes.forEach(function(x){x[0].nodeValue=l==='en'?x[1].replace(x[2],EN[x[2]]):x[1]});
+  attrs.forEach(function(x){x[0].setAttribute('aria-label',l==='en'?EN[x[1]]:x[1])});
+  document.title=l==='en'?EN[T0]:T0;desc.content=l==='en'?D1:D0;bug.href=l==='en'?B1:B0;
+  root.lang=l;btn.textContent=l==='en'?'FR':'EN';btn.lang=l==='en'?'fr':'en';
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+var l=null;try{l=localStorage.getItem('lang')}catch(e){}
+if(!l)l=(navigator.language||'fr').slice(0,2)==='fr'?'fr':'en';
+set(l);
+btn.addEventListener('click',function(){set(root.lang==='en'?'fr':'en')});
+})();
+</script>
+</body>
+</html>
